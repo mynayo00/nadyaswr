@@ -192,7 +192,7 @@
   <div class="port-filters reveal" style="justify-content:center">
     <button class="port-filter active" onclick="filterPort('all',this)">All</button>
     <button class="port-filter" onclick="filterPort('da',this)">Data Analysis & Viz</button>
-    <button class="port-filter" onclick="filterPort('ds',this)">Machine Learning</button>
+    <button class="port-filter" onclick="filterPort('ds',this)">Data Science</button>
   </div>
   <div class="port-grid reveal">
     <div class="port-card" data-cat="da">
@@ -207,25 +207,27 @@
       </div>
     </div>
 
-    <div class="port-card" data-cat="da">
-      <div class="port-thumb port-thumb-da">
+    <div class="port-card" data-cat="ds">
+      <div class="port-thumb port-thumb-ds">
         <img src="image/zomato.png">
       </div>
       <div class="port-body">
-        <div class="port-tag port-tag-da">Data Analysis & Viz</div>
+        <div class="port-tag port-tag-ds">Data Science</div>
         <div class="port-title">Predicting Food Delivery Arrival Time for Zomato App</div>
-        <div class="port-desc">RFM analysis and cohort tracking to identify high-value customer segments and optimize retention strategies.</div>
-        <div class="port-pills"><span class="port-pill">Tableau</span><span class="port-pill">Python</span><span class="port-pill">PostgreSQL</span></div>
+        <div class="port-desc">Built regression models in Python to forecast food delivery ETA (Estimated Time of Arrival), improving prediction accuracy and supporting Zomato’s operations.</div>
+        <div class="port-pills"><span class="port-pill">Python</span><span class="port-pill">Linear Regression</span><span class="port-pill">Random Forest</span><span class="port-pill">XGBoost</span><span class="port-pill">LightGBM</span></div>
       </div>
     </div>
 
     <div class="port-card" data-cat="ds">
-      <div class="port-thumb port-thumb-ds">🤖</div>
+      <div class="port-thumb port-thumb-ds">
+        <img src="image/coffee.jpg">
+      </div>
       <div class="port-body">
-        <div class="port-tag port-tag-ds">Machine Learning</div>
-        <div class="port-title">Predictive Churn Model</div>
-        <div class="port-desc">Classification model (Random Forest + XGBoost) predicting customer churn with 87% accuracy and risk scoring.</div>
-        <div class="port-pills"><span class="port-pill">Python</span><span class="port-pill">XGBoost</span><span class="port-pill">Scikit-learn</span></div>
+        <div class="port-tag port-tag-ds">Data Science</div>
+        <div class="port-title">Forecasting Coffee Sales Trends in Shopping Centers</div>
+        <div class="port-desc">Conducted time series forecasting on coffee sales data (Mar 2024–Mar 2025) using ARIMA, Holt-Winters, and Prophet models to identify seasonal demand, customer preferences, and optimize inventory strategies</div>
+        <div class="port-pills"><span class="port-pill">Python</span><span class="port-pill">ARIMA</span><span class="port-pill">SARIMAX</span><span class="port-pill">Holt-Winters</span><span class="port-pill">Prophet</span><span class="port-pill">Scikit-learn</span></div>
       </div>
     </div>
 
@@ -258,7 +260,15 @@
         <div class="port-pills"><span class="port-pill">Google Analytics</span><span class="port-pill">Looker Studio</span></div>
       </div>
     </div>
-
+    <div class="port-card" data-cat="da">
+      <div class="port-thumb port-thumb-da">📈</div>
+      <div class="port-body">
+        <div class="port-tag port-tag-da">Data Analysis & Viz</div>
+        <div class="port-title">Google Analytics Web Audit</div>
+        <div class="port-desc">Traffic and conversion funnel analysis for e-commerce, uncovering drop-off points and actionable UX improvements.</div>
+        <div class="port-pills"><span class="port-pill">Google Analytics</span><span class="port-pill">Looker Studio</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
