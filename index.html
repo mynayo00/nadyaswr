@@ -6,6 +6,8 @@
 <title>Nadya Aswarani | Data Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
 <style>
 :root {
   --bg: #0d0d0d;
@@ -81,6 +83,34 @@ nav {
 }
 .nav-hire:hover { background: #00b894 !important; color: #0d0d0d !important; }
 .nav-hire::after { display:none !important; }
+.nav-toggle {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .nav-links {
+    display: none; /* default: sembunyi di layar kecil */
+    flex-direction: column;
+    background: rgba(13,13,13,0.95);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+  }
+
+  nav.active .nav-links {
+    display: flex; /* muncul saat nav.active */
+  }
+
+  .nav-toggle {
+    display: block;
+    font-size: 1.5rem;
+    color: var(--text);
+    cursor: pointer;
+  }
+}
+
 
 /* ── HERO ── */
 #home {
@@ -106,7 +136,10 @@ nav {
   bottom: 50px; left: -50px;
   pointer-events: none;
 }
-.hero-left { padding-right: 3rem; }
+.hero-left {
+  padding-right: 3rem;
+  flex: 1 1 400px;
+}
 .hero-greeting {
   font-size: 0.9rem; font-weight: 500;
   color: var(--accent);
@@ -197,6 +230,7 @@ nav {
 .hero-right {
   display:flex; justify-content:center; align-items:center;
   position: relative;
+  flex: 1 1 400px;
 }
 .hero-img-wrap {
   position: relative;
@@ -224,7 +258,14 @@ nav {
   font-size: 7rem;
   overflow: hidden;
 }
-.hero-avatar-emoji { line-height:1; }
+.hero-avatar-img {
+  max-width: 100%;       
+  height: auto;
+  border-radius: 50%;  
+  object-fit: cover;   
+  border: 2px solid var(--accent); 
+}
+
 .hero-badge {
   position:absolute;
   padding: 0.6rem 1rem;
@@ -292,7 +333,11 @@ section { padding: 5rem 5%; }
 /* ── SERVICES ── */
 #service { background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
 .services-grid {
-  display:grid; grid-template-columns: repeat(4,1fr); gap:1.25rem;
+  display: flex;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;          
 }
 .service-card {
   background:var(--card);
@@ -302,6 +347,7 @@ section { padding: 5rem 5%; }
   transition: all 0.3s;
   position:relative;
   overflow:hidden;
+  max-width: 250px;
 }
 .service-card::before {
   content:'';
@@ -335,7 +381,12 @@ section { padding: 5rem 5%; }
   text-transform:uppercase; color:var(--accent);
   margin-bottom:1rem;
 }
-.skill-pills { display:flex; flex-wrap:wrap; gap:0.5rem; }
+.skill-pills { 
+  display:flex; 
+  flex-wrap:wrap; 
+  gap:0.5rem;
+  margin-top: 0.5rem;
+}
 .skill-pill {
   padding:0.4rem 0.9rem;
   background:var(--card);
@@ -645,21 +696,26 @@ footer {
   .form-row { grid-template-columns:1fr; }
 }
 </style>
+<script src="script.js"></script>
 </head>
 <body>
 
 <!-- NAV -->
+<!-- NAV -->
 <nav>
   <a href="#home" class="nav-logo">Nadya<span>.</span></a>
+  <div class="nav-toggle"><i class="fa-solid fa-bars"></i></div>
   <ul class="nav-links">
     <li><a href="#experience">Experience</a></li>
     <li><a href="#service">Services</a></li>
     <li><a href="#skills">Skills</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#certs">Certifications</a></li>
     <li><a href="#contact" class="nav-hire">Let's work together</a></li>
   </ul>
 </nav>
+
+
 
 <!-- HERO -->
 <section id="home">
@@ -678,7 +734,7 @@ footer {
       </div>
     </div>
     <p class="hero-desc">
-      A data professional with an Agronomy & Horticulture background, driving data-informed decisions through SQL, Python, Power BI, Tableau, and advanced analytics. Experienced in project expenditure tracking and AFE workflow management.
+      A data professional with an <span style="color:var(--accent)">Agronomy & Horticulture </span>background, driving data-informed decisions through SQL, Python, Power BI, Tableau, and advanced analytics. Experienced in project expenditure tracking and AFE workflow management.
     </p>
     <div class="hero-btns">
       <a href="#portfolio" class="btn-main"><i class="fa-solid fa-briefcase"></i> View Portfolio</a>
@@ -697,7 +753,7 @@ footer {
       <div class="hero-img-ring"></div>
       <div class="hero-img-ring2"></div>
       <div class="hero-img-bg">
-        <span class="hero-avatar-emoji">👩‍💻</span>
+        <img src="nadya-photo.jpeg" alt="Me" class="hero-avatar-img">
       </div>
       <div class="hero-badge badge-1"><i class="fa-solid fa-chart-bar"></i> Data Analyst</div>
       <div class="hero-badge badge-2"><i class="fa-solid fa-brain"></i> Data Scientist</div>
@@ -713,8 +769,8 @@ footer {
 <!-- EXPERIENCES -->
 <section id="experience">
   <div class="reveal" style="text-align:center;margin-bottom:3rem">
-    <div class="section-tag" style="justify-content:center">My Resume</div>
-    <h2 class="section-title"><span>Experiences</span> & Education</h2>
+    <div class="section-tag" style="justify-content:center"></div>
+    <h2 class="section-title"><span>Experiences</span> & Educations</h2>
   </div>
   <div class="exp-layout">
     <div class="reveal">
@@ -762,7 +818,7 @@ footer {
     </div>
 
     <div class="reveal">
-      <div class="section-tag" style="margin-bottom:1.5rem">Education</div>
+      <div class="section-tag" style="margin-bottom:1.5rem">Educations</div>
       <div class="edu-cards">
         <div class="edu-card">
           <div class="edu-year">2023 · Certificate</div>
@@ -784,102 +840,36 @@ footer {
   <div class="reveal" style="text-align:center;margin-bottom:3rem">
     <div class="section-tag" style="justify-content:center"></div>
     <h2 class="section-title" style="justify-content:center">Technical <span>Skills</span></h2>
-    <p class="section-sub" style="margin:0 auto">Turning complex data into clear, actionable insights that drive smarter business decisions.</p>
   </div>
   <div class="services-grid reveal">
     <div class="service-card">
       <div class="service-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
       <div class="service-title">Programming Languages</div>
-      <div class="service-desc">Examine datasets to find trends, provide insights, and draw meaningful conclusions to support business goals.</div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon" style="background:rgba(124,111,224,0.1);border-color:rgba(124,111,224,0.2);color:var(--accent2)"><i class="fa-solid fa-chart-pie"></i></div>
-      <div class="service-title">Analytic Tools</div>
-      <div class="service-desc">Translate datasets into compelling dashboards and visual stories using Tableau, Power BI, and Looker Studio.</div>
+      <div class="skill-pills">
+        <span class="skill-pill ">Python</span>
+        <span class="skill-pill ">SQL</span>
+      </div>
     </div>
     <div class="service-card">
       <div class="service-icon" style="background:rgba(255,107,107,0.1);border-color:rgba(255,107,107,0.2);color:var(--accent3)"><i class="fa-solid fa-robot"></i></div>
-      <div class="service-title">Visualization Tools</div>
-      <div class="service-desc">Build predictive models using Python and Scikit-learn to help businesses anticipate trends and reduce risk.</div>
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start">
-    <div class="reveal">
-      <div class="section-tag">What I Know</div>
-      <h2 class="section-title">Technical <span>Skills</span></h2>
-      <p class="section-sub">A diverse toolkit spanning data engineering, analytics, and machine learning.</p>
-      <div class="skills-cats">
-        <div>
-          <div class="skill-cat-title">Programming Languages</div>
+      <div class="service-title">Analytic Tools</div>
           <div class="skill-pills">
-            <span class="skill-pill hot">Python</span>
-            <span class="skill-pill hot">SQL</span>
-            <span class="skill-pill">PostgreSQL</span>
-            <span class="skill-pill">Pandas</span>
-            <span class="skill-pill">NumPy</span>
-          </div>
-        </div>
-        <div>
-          <div class="skill-cat-title">Visualization Tools</div>
-          <div class="skill-pills">
-            <span class="skill-pill hot">Tableau</span>
-            <span class="skill-pill hot">Power BI</span>
-            <span class="skill-pill">Looker Studio</span>
-            <span class="skill-pill">Google Analytics</span>
-          </div>
-        </div>
-        <div>
-          <div class="skill-cat-title">Tools & Platforms</div>
-          <div class="skill-pills">
+            <span class="skill-pill">Excel</span>
             <span class="skill-pill">Google Colab</span>
-            <span class="skill-pill">DBeaver</span>
-            <span class="skill-pill">Git & GitHub</span>
             <span class="skill-pill">VS Code</span>
-            <span class="skill-pill">Scikit-learn</span>
+            <span class="skill-pill">PostgreSQL</span>
+            <span class="skill-pill">Git & GitHub</span>
+            <span class="skill-pill">DBeaver</span>
           </div>
-        </div>
-        <div>
-          <div class="skill-cat-title">Productivity</div>
-          <div class="skill-pills">
-            <span class="skill-pill hot">Excel</span>
-            <span class="skill-pill">Google Sheets</span>
-            <span class="skill-pill">PowerPoint</span>
-            <span class="skill-pill">AFE Management</span>
-          </div>
-        </div>
-      </div>
     </div>
-
-    <div class="reveal" style="margin-top:4.5rem">
-      <div class="skill-bars" id="skill-bars">
-        <div class="skill-bar-item">
-          <div class="skill-bar-top"><span class="skill-bar-name">SQL & Database</span><span class="skill-bar-pct">90%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="90"></div></div>
-        </div>
-        <div class="skill-bar-item">
-          <div class="skill-bar-top"><span class="skill-bar-name">Python (Pandas, Scikit-learn)</span><span class="skill-bar-pct">82%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="82"></div></div>
-        </div>
-        <div class="skill-bar-item">
-          <div class="skill-bar-top"><span class="skill-bar-name">Tableau / Power BI</span><span class="skill-bar-pct">88%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="88"></div></div>
-        </div>
-        <div class="skill-bar-item">
-          <div class="skill-bar-top"><span class="skill-bar-name">Microsoft Excel</span><span class="skill-bar-pct">92%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="92"></div></div>
-        </div>
-        <div class="skill-bar-item">
-          <div class="skill-bar-top"><span class="skill-bar-name">Machine Learning</span><span class="skill-bar-pct">75%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="75"></div></div>
-        </div>
-        <div class="skill-bar-item">
-          <div class="skill-bar-top"><span class="skill-bar-name">Data Storytelling</span><span class="skill-bar-pct">87%</span></div>
-          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="87"></div></div>
-        </div>
+    <div class="service-card">
+      <div class="service-icon" style="background:rgba(124,111,224,0.1);border-color:rgba(124,111,224,0.2);color:var(--accent2)"><i class="fa-solid fa-chart-pie"></i></div>
+      <div class="service-title">Visualization Tools</div>
+      <div class="skill-pills">
+        <span class="skill-pill">Tableau</span>
+        <span class="skill-pill ">Power BI</span>
+        <span class="skill-pill">Looker Studio</span>
+        <span class="skill-pill">Google Analytics</span>
       </div>
     </div>
   </div>
@@ -889,8 +879,8 @@ footer {
 <!-- PORTFOLIO -->
 <section id="portfolio">
   <div class="reveal" style="text-align:center;margin-bottom:2rem">
-    <div class="section-tag" style="justify-content:center">My Portfolio</div>
-    <h2 class="section-title">Featured <span>Works</span></h2>
+    <div class="section-tag" style="justify-content:center"></div>
+    <h2 class="section-title">Portfolio <span>Highlights</span></h2>
   </div>
   <div class="port-filters reveal" style="justify-content:center">
     <button class="port-filter active" onclick="filterPort('all',this)">All</button>
